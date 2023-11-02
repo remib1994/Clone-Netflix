@@ -2,8 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-@components{
-    h1{
-        
+@layer components {
+    h1,h2,h3,h4,h5,h6 {
+        @apply
+        p-5
+        font-bold
     }
+    h1{
+        @apply
+        text-4xl text-red-700
+        indent-8
+    }
+    h2{
+        @apply
+        text-3xl
+        indent-12
+    }
+    h3{
+        @apply
+        text-2xl
+        indent-16
+    }
+    h4{
+        @apply
+        text-xl
+        indent-20
+    }
+    h5{
+        @apply
+        text-lg
+        indent-24
+    }
+    h6{
+        @apply
+        text-base
+        indent-28
+    }
+
 }
+

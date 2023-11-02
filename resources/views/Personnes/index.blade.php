@@ -5,7 +5,7 @@
 
     <section class="main-container " >
         <div class="text-center">
-            <h1 class="text-5xl text-blue-600"> Affichage de personne</h1>
+            <h1> Affichage de personne</h1>
 
         </div>
         <div class="location " id="home">
@@ -20,13 +20,7 @@
                             </div>
                             <div class="justify-between p-4 leading-normal w-9/12">
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{$personne->prenom}} {{$personne->nom}}</h5>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">date de naissance : {{$personne->date_naissance}}<br>
-                                    nationalite : {{$personne->nationalite}}<br>
-                                    sexe : {{$personne->sexe}}<br>
-                                    rôle : {{$personne->role}}<br>
-                                    Acteur : {{$personne->filmsA->count()}} films <br>
-                                    Producteur : {{$personne->filmsP->count()}} films <br>
-                                    Réalisateur : {{$personne->filmsR->count()}} films <br>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                                   </p>
                             </div>
                         </a>
