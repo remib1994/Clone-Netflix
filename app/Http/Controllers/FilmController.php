@@ -47,10 +47,10 @@ class FilmController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Film $film)
     {
-        $film = Film::find($id);
-        return View('Films.show', ['film'=>$film]);
+        
+        return View('Films.show', compact('film'));
 
     }
 

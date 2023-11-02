@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.3.3 | MIT License | https://tailwindcss.com
+! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -638,14 +638,6 @@ h6 {
   z-index: 10;
 }
 
-.col-auto {
-  grid-column: auto;
-}
-
-.row-auto {
-  grid-row: auto;
-}
-
 .mx-6 {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
@@ -756,6 +748,10 @@ h6 {
   width: 1.75rem;
 }
 
+.w-9\/12 {
+  width: 75%;
+}
+
 .w-auto {
   width: auto;
 }
@@ -768,10 +764,6 @@ h6 {
   max-width: 80rem;
 }
 
-.flex-1 {
-  flex: 1 1 0%;
-}
-
 .shrink-0 {
   flex-shrink: 0;
 }
@@ -782,45 +774,12 @@ h6 {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.columns-3 {
-  -moz-columns: 3;
-       columns: 3;
-}
-
-.columns-auto {
-  -moz-columns: auto;
-       columns: auto;
-}
-
-.columns-10 {
-  -moz-columns: 10;
-       columns: 10;
-}
-
-.columns-2xl {
-  -moz-columns: 42rem;
-       columns: 42rem;
-}
-
-.columns-2 {
-  -moz-columns: 2;
-       columns: 2;
-}
-
-.grid-flow-row {
-  grid-auto-flow: row;
+.resize {
+  resize: both;
 }
 
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
-}
-
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.grid-rows-1 {
-  grid-template-rows: repeat(1, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -833,10 +792,6 @@ h6 {
 
 .items-center {
   align-items: center;
-}
-
-.justify-end {
-  justify-content: flex-end;
 }
 
 .justify-center {
@@ -1104,6 +1059,11 @@ h6 {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+@components{
+  h1{
+  }
 }
 
 .selection\:bg-red-500 *::-moz-selection {

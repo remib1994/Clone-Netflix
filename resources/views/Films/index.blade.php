@@ -13,14 +13,13 @@
         <div class="location" id="home">
 
             <h1 id="home">Tous les films</h1>
-
             <div class="box">
 
                 @if($films->count() > 0)
 
                     @foreach($films as $film)
 
-                        <a href="{{--{{route('films.show',$film->id)}}--}}">
+                        <a href="{{route('films.show',[$film])}}">
 
                             <h2>{{$film->titre}}</h2>
 
