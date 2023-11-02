@@ -52,7 +52,7 @@
 
                 @foreach($filmsCanada as $film)
 
-                    <a href="{{--{{route('films.show',$film->id)}}--}}">
+                <a href="{{route('films.show',[$film])}}">
 
                         <h2>{{$film->titre}}</h2>
 
@@ -82,7 +82,7 @@
 
                 @foreach($filmsGenre as $film)
 
-                    <a href="{{--{{route('films.show',$film->id)}}--}}">
+                <a href="{{route('films.show',[$film])}}">
 
                         <h2>{{$film->titre}}</h2>
 
@@ -112,7 +112,7 @@
 
                 @foreach($filmsUnivers as $film)
 
-                    <a href="{{--{{route('films.show',$film->id)}}--}}">
+                <a href="{{route('films.show',[$film])}}">
 
                         <h2>{{$film->titre}}</h2>
 
@@ -142,7 +142,7 @@
 
                     <card>
 
-                        <a href="{{--{{route('films.show',$film->id)}}--}}">
+                    <a href="{{route('films.show',[$film])}}">
 
                             <h2>{{$film->titre}}</h2>
 
