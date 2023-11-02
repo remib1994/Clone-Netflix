@@ -10,6 +10,7 @@
         <h4>TEST</h4>
         <h5>TEST</h5>
         <h6>TEST</h6>
+        <p class="indent"> {{$film->description}}</p>
 
         </div>
 

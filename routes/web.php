@@ -23,4 +23,7 @@ Route::get('Pokemons',
     [PokemonsController::class,'index'])->name('pokemons.index');
 Route::resource('Films',FilmController::class);
 
+
 Route::resource('Personnes', PersonneController::class);
+
+
