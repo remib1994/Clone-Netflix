@@ -13,6 +13,7 @@
         <div class="location" id="home">
 
             <h1 id="home">Tous les films</h1>
+            <a href="{{route('films.create')}}">Ajouter un film</a>
             <div class="box">
 
                 @if($films->count() > 0)

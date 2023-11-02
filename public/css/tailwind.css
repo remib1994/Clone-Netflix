@@ -1008,11 +1008,6 @@ h6 {
   transition-duration: 150ms;
 }
 
-@components{
-  h1{
-  }
-}
-
 .selection\:bg-red-500 *::-moz-selection {
   --tw-bg-opacity: 1;
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
@@ -1253,3 +1248,4 @@ h6 {
     padding: 2rem;
   }
 }
+

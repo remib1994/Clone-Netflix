@@ -26,6 +26,7 @@ Route::resource('Films',FilmController::class);
 Route::get('Films/{film}/',
     [FilmController::class,'show'])->name('films.show');
 
+    Route::get('Films.create',[FilmController::class,'create'])->name('films.create');
 
 Route::resource('Personnes', PersonneController::class);
 
