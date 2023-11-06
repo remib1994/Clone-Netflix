@@ -28,6 +28,10 @@ Route::get('Films/{film}/',
 
     Route::get('Films.create',[FilmController::class,'create'])->name('films.create');
 
+    Route::post('Films.store',[FilmController::class,'store'])->name('films.store');
+
+
+
 Route::resource('Personnes', PersonneController::class);
 
 

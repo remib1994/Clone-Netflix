@@ -36,4 +36,14 @@
                         @endif
 
         </section>
+        @if(isset($errors) && $errors->any())
+        <div class="bg-red-500 p-4 rounded-lg mb-6 text-white text-center">
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+
+            </ul>
+        </div>
+        @endif
     @endsection

@@ -11,7 +11,7 @@
     <section class="main-container" >
 
         <div class="location" id="home">
-
+            
             <h1 id="home">Tous les films</h1>
             <a href="{{route('films.create')}}">Ajouter un film</a>
             <div class="box">
@@ -22,7 +22,7 @@
 
                         <a href="{{route('films.show',[$film])}}">
 
-                            <h2>{{$film->titre}}</h2>
+                         
 
                             <img src="{{$film->urlaffiche}}" alt="">
 
@@ -54,7 +54,7 @@
 
                 <a href="{{route('films.show',[$film])}}">
 
-                        <h2>{{$film->titre}}</h2>
+                        
 
                         <img src="{{$film->urlaffiche}}" alt="">
 
@@ -84,7 +84,7 @@
 
                 <a href="{{route('films.show',[$film])}}">
 
-                        <h2>{{$film->titre}}</h2>
+                        
 
                         <img src="{{$film->urlaffiche}}" alt="">
 
@@ -114,7 +114,7 @@
 
                 <a href="{{route('films.show',[$film])}}">
 
-                        <h2>{{$film->titre}}</h2>
+                        
 
                         <img src="{{$film->urlaffiche}}" alt="">
 
@@ -144,7 +144,7 @@
 
                     <a href="{{route('films.show',[$film])}}">
 
-                            <h2>{{$film->titre}}</h2>
+                           
 
                             <img src="{{$film->urlaffiche}}" alt="">
 

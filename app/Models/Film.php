@@ -21,5 +21,20 @@ class Film extends Model
         return $this->belongsToMany(Personne::class);
     }
 
+    protected $fillable = [
+        'titre',
+        'urlaffiche',
+        'genre',
+        'pays',
+        'univers',
+        'audience',
+        'realisateur_id',
+        'producteur_id',
+    ];
+    public function films()
+    {
+        return $this->hasMany(Film::class);
+    }
+
 
 }

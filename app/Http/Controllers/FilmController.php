@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Film;
+use App\Models\Personne;
+use Illuminate\Support\Facades\Log;
 
 class FilmController extends Controller
 {
@@ -17,6 +19,7 @@ class FilmController extends Controller
         $filmsGenre = Film::where('genre', 'thriller')->get();
         $filmsUnivers = Film::where('univers', 'Marvel')->get();
         $films18 = Film::where('audience', '18')->get();
+        
 
         return view('Films.index',
             [
@@ -33,7 +36,14 @@ class FilmController extends Controller
      */
     public function create()
     {
-        return View('Films.Create');
+        $realisateur = Personne::where('role', 'realisateur')->get();
+        $producteur = Personne::where('role', 'producteur')->get();
+        return View('Films.Create',[
+           
+            'realisateurs'=>$realisateur,
+            'producteurs'=>$producteur,
+        ]);
+
     }
 
     /**
@@ -41,7 +51,16 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $film = new Film($request->all());
+            
+            $film->save();
+            
+        }
+        catch(\Throwable $e){
+           Log::debug($e);
+        }
+        return redirect()->route('films.index');
     }
 
     /**
@@ -78,5 +97,28 @@ class FilmController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function storeActeurFilm(Request $request)
+    {
+        try{
+      $acteur = Personne::find($request->acteur_id);
+        $film = Film::find($request->film_id);
+        
+        if($acteur->films->contains($film))
+        {
+            Log::debug("L'acteur est deja dans le film");
+        }
+        else
+        {
+            $acteur->films()->attach($film);
+            $acteur->save();
+        }
+        return redirect()->route('films.show');
+        }
+        catch(\Throwable $e){
+            Log::debug($e);
+            return redirect()->route('films.index');
+        }
+        
     }
 }
