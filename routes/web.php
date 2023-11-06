@@ -25,6 +25,6 @@ Route::resource('Films',FilmController::class);
 
 Route::resource('Personnes',PersonneController::class)->only(['index', 'edit','update','destroy', 'create', 'store','show']);
 Route::controller(PersonneController::class)->prefix('Personnes')->group(function () {
-    Route::post('attach', 'attach')->name('PersonnesFilms.attach');
-    Route::post('detach', 'detach')->name('PersonnesFilms.detach');
+    Route::post('attach', 'attach')->name('ActeurFilm.attach');
+    Route::post('detach', 'detach')->name('ActeurFilm.detach');
 });

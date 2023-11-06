@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Film;
 use Illuminate\Http\Request;
 use App\Models\Personne;
 
@@ -57,7 +58,14 @@ class PersonneController extends Controller
          */
         public function edit(string $id)
     {
-        //
+        $personne = Personne::find($id);
+        $filmsA = $personne->filmsA;
+        $films = Film::whereNotIn('id', $filmsA->pluck('id')->toArray())->get();
+        return View('Personnes.edit',[
+            'personne'=>$personne,
+            'films'=>$films,
+            'filmsA'=>$filmsA,
+            ]);
     }
 
         /**
@@ -74,5 +82,18 @@ class PersonneController extends Controller
         public function destroy(string $id)
     {
         //
+    }
+    public function attach(Request $request)
+    {
+        $personne = Personne::find($request->personne_id);
+        $personne->filmsA()->attach($request->film_id);
+        return redirect()->route('personne.edit', $request->personne_id);
+
+    }
+    public function detach(Request $request,)
+    {
+        $personne = Personne::find($request->personne_id);
+        $personne->filmsA()->detach($request->film_id);
+        return redirect()->route('personne.edit', $request->personne_id);
     }
 }
