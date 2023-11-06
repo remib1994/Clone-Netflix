@@ -22,14 +22,28 @@
                                 description : {{$films->description}}<br>
                                 date sortie : {{$films->datesortie}}<br>
                                 rating : {{$films->rating}}<br>
+                                producteur : {{$films->producteur->nom}} {{$films->producteur->prenom}} <br>
+                                realisateur : {{$films->realisateur->nom}} {{$films->realisateur->prenom}}<br>
                                 genre : {{$films->genre}}<br>
                                 univers : {{$films->univers}} <br>
                                 audience : {{$films->audience}} <br>
                                 pays : {{$films->pays}}<br>
                                 trailer : {{$films->urltrailer}}<br>
+                               
+                               
                                 </p>
                             </div>
                         </a>
+
+                        <hr class="my-4">
+                        @if($films->acteurs->count() > 0)
+                        acteur:
+                        @foreach($films->acteurs as $acteur)
+                                 {{$acteur->nom}} {{$acteur->prenom}}
+                        @endforeach
+                        @else
+                        aucun acteurs
+                        @endif
                         @else
                         <p>pas de films selectionner</p>
                         <a href="{{route('Films.index')}}">retour</a>

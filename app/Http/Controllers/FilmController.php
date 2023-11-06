@@ -52,7 +52,20 @@ class FilmController extends Controller
     public function store(Request $request)
     {
         try{
-            $film = new Film($request->all());
+            $film = new Film();
+            $film->titre = $request->titre;
+            $film->genre = $request->genre;
+            $film->pays = $request->pays;
+            $film->univers = $request->univers;
+            $film->audience = $request->audience;
+            $film->realisateur_id = $request->realisateur_id;
+            $film->producteur_id = $request->producteur_id;
+            $film->description = $request->description;
+            $film->urlaffiche = $request->urlaffiche;
+            $film->datesortie = $request->datesortie;
+            $film->rating = $request->rating;
+            $film->urltrailer = $request->urltrailer;
+
             
             $film->save();
             
@@ -60,7 +73,7 @@ class FilmController extends Controller
         catch(\Throwable $e){
            Log::debug($e);
         }
-        return redirect()->route('films.index');
+        return redirect()->route('Films.index');
     }
 
     /**
