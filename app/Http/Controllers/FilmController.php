@@ -19,7 +19,7 @@ class FilmController extends Controller
         $filmsGenre = Film::where('genre', 'thriller')->get();
         $filmsUnivers = Film::where('univers', 'Marvel')->get();
         $films18 = Film::where('audience', '18')->get();
-        
+
 
         return view('Films.index',
             [
@@ -39,7 +39,7 @@ class FilmController extends Controller
         $realisateur = Personne::where('role', 'realisateur')->get();
         $producteur = Personne::where('role', 'producteur')->get();
         return View('Films.Create',[
-           
+
             'realisateurs'=>$realisateur,
             'producteurs'=>$producteur,
         ]);
@@ -66,9 +66,9 @@ class FilmController extends Controller
             $film->rating = $request->rating;
             $film->urltrailer = $request->urltrailer;
 
-            
+
             $film->save();
-            
+
         }
         catch(\Throwable $e){
            Log::debug($e);
@@ -93,17 +93,17 @@ class FilmController extends Controller
      */
     public function edit(string $id)
     {
-        $realisateur = Personne::where('role', 'realisateur')->get();
-        $producteur = Personne::where('role', 'producteur')->get();
+        $realisateur = Personne::all();
+        $producteur = Personne::all();
         $films = Film::findOrFail($id);
         return View('Films.modifier', [
-           
+
             'realisateurs'=>$realisateur,
             'producteurs'=>$producteur,
             'films'=>$films,
         ]);
-        
-           
+
+
     }
 
     /**
@@ -111,7 +111,7 @@ class FilmController extends Controller
      */
     public function update(Request $request, string $id)
     {
-      
+
     }
 
     /**
@@ -135,7 +135,7 @@ class FilmController extends Controller
         try{
       $acteur = Personne::find($request->acteur_id);
         $film = Film::find($request->film_id);
-        
+
         if($acteur->films->contains($film))
         {
             Log::debug("L'acteur est deja dans le film");
@@ -151,6 +151,6 @@ class FilmController extends Controller
             Log::debug($e);
             return redirect()->route('films.index');
         }
-        
+
     }
 }
