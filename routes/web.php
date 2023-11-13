@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PokemonsController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\PersonneController;
+use App\Http\Controllers\UsagersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,8 +17,14 @@ use App\Http\Controllers\PersonneController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Auth.login');
 });
+
+Route::controller(UsagersController::class)->prefix('login')->group(function () {
+    Route::get('', 'create')->name('login');
+    Route::post('', 'store');
+});
+Route::post('logout', [UsagersController::class, 'destroy'])->name('logout');
 
 Route::get('Pokemons',
     [PokemonsController::class,'index'])->name('pokemons.index');
@@ -28,3 +35,6 @@ Route::controller(PersonneController::class)->prefix('Personnes')->group(functio
     Route::post('attach', 'attach')->name('ActeurFilm.attach');
     Route::post('detach', 'detach')->name('ActeurFilm.detach');
 });
+
+
+
