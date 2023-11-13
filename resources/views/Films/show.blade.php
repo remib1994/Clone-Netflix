@@ -29,8 +29,12 @@
                                 audience : {{$films->audience}} <br>
                                 pays : {{$films->pays}}<br>
                                 trailer : {{$films->urltrailer}}<br>
-                               
-                               
+                                <a href="{{route('Films.edit',[$films])}}">modifier</a>
+                                <form method="post" action="{{route('Films.destroy',[$films->id])}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">supprimer</button>
+                               </form>
                                 </p>
                             </div>
                         </a>
@@ -47,7 +51,7 @@
                         @else
                         <p>pas de films selectionner</p>
                         <a href="{{route('Films.index')}}">retour</a>
-                        @endif
+                         @endif
 
         </section>
         @if(isset($errors) && $errors->any())

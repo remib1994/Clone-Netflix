@@ -30,8 +30,10 @@ Route::get('Films/{film}/',
 
     Route::post('Films.store',[FilmController::class,'store'])->name('films.store');
 
-
+Route::get('Films/{film}/edit',
+    [FilmController::class,'edit'])->name('films.edit');
 
 Route::resource('Personnes', PersonneController::class);
 
-
+Route::delete('Films/{id}',
+    [FilmController::class,'destroy'])->name('films.destroy');

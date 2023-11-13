@@ -93,7 +93,17 @@ class FilmController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $realisateur = Personne::where('role', 'realisateur')->get();
+        $producteur = Personne::where('role', 'producteur')->get();
+        $films = Film::findOrFail($id);
+        return View('Films.modifier', [
+           
+            'realisateurs'=>$realisateur,
+            'producteurs'=>$producteur,
+            'films'=>$films,
+        ]);
+        
+           
     }
 
     /**
@@ -101,7 +111,7 @@ class FilmController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+      
     }
 
     /**
@@ -109,7 +119,16 @@ class FilmController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try{
+            $films = Film::findOrFail($id);
+            $films->acteurs()->detach();
+            $films->delete();
+        }
+        catch(\Throwable $e){
+            Log::debug($e);
+            return redirect()->route('Films.index')->with('error','Impossible de supprimer le film');
+        }
+        return redirect()->route('Films.index')->with('success','Film supprimer');
     }
     public function storeActeurFilm(Request $request)
     {
