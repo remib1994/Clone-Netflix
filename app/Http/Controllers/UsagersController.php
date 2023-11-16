@@ -7,7 +7,7 @@ use app\Models\Usager;
 use app\Models\Film;
 use Illuminate\Http\Request;
 use app\Models\Personne;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class UsagersController extends Controller
 {
@@ -16,9 +16,33 @@ class UsagersController extends Controller
         $success = Auth::attempt(['email' => $request->email, 'password' => $request->password]);
 
         if($success){
-            return redirect()->route('Films.index')->withErrors(['message'=>'Connexion réussi.']);
+            return redirect()->route('Films.index')->with('message','Connexion réussi.');
         }else{
-            return redirect()->route('Films.index')->withErrors(['message'=>'Connexion échoué.']);
+            return redirect()->route('showLoginForm')->withErrors(['Informations invalides.']);
         }
+    }
+    public function showLoginForm(){
+        return view('Auth.login');
+    }
+
+    public function create()
+    {
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+
     }
 }
