@@ -21,13 +21,12 @@ Route::get('/', function () {
 });
 
 Route::controller(UsagersController::class)->prefix('login')->group(function () {
-    Route::get('', 'create')->name('login');
-    Route::post('', 'store');
+    Route::get('', 'showLoginForm')->name('showLoginForm');
+    Route::post('', 'login')->name('login');
+    Route::post('logout','logout')->name('logout');
 });
-Route::post('logout', [UsagersController::class, 'destroy'])->name('logout');
+/*Route::post('destroy', [UsagersController::class, 'destroy'])->name('logout');*/
 
-Route::get('Pokemons',
-    [PokemonsController::class,'index'])->name('pokemons.index');
 Route::resource('Films',FilmController::class);
 
 Route::get('Films/{film}/',
