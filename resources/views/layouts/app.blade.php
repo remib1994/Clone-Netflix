@@ -31,8 +31,19 @@
     <nav class="sub-nav">
         <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
         <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a>
-        <a href="#">Mon compte</a>
-
+        
+        @auth
+        @if($user = Auth::user())
+        <form method="post" action="{{route('logout')}}" >
+            @csrf
+            <button type="submit">deconnexion</button>
+        </form>
+            <a href="#">@role('admin') admin @endrole @role('normal') normal @endrole @role('enfant') enfant @endrole </a>
+         @else
+            <a href="{{route('login')}}">Connexion</a>
+            
+            @endif
+        @endauth
     </nav>
 </header>
 <!-- End Header -->

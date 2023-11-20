@@ -19,6 +19,7 @@ class FilmController extends Controller
         $filmsGenre = Film::where('genre', 'thriller')->get();
         $filmsUnivers = Film::where('univers', 'Marvel')->get();
         $films18 = Film::where('audience', '18')->get();
+        $filmsTP = Film::where('audience', 'TP')->get();
         
 
         return view('Films.index',
@@ -28,6 +29,7 @@ class FilmController extends Controller
                 'filmsGenre'=>$filmsGenre,
                 'filmsUnivers'=>$filmsUnivers,
                 'films18'=>$films18,
+                'filmsTP'=>$filmsTP,
             ]);
     }
 

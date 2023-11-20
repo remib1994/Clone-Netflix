@@ -38,7 +38,9 @@
                     <h1>Aucun film</h1>
 
                 @endif
-
+@role('admin')
+<p>vous etes admin ou normal</p>
+@endrole
 
 
 
@@ -135,36 +137,97 @@
 
 
 
+        
+       
+         @role('admin')
         <h1 id="tvShows">Film pour une auditoire mature</h1>
-
         <div class="box">
-
             @if($films18->count() > 0)
 
                 @foreach($films18 as $film)
+                <card>
 
-                    <card>
+<a href="{{route('films.show',[$film])}}">
 
-                    <a href="{{route('films.show',[$film])}}">
+       
 
-                           
+        <img src="{{$film->urlaffiche}}" alt="">
 
-                            <img src="{{$film->urlaffiche}}" alt="">
+    </a>
 
-                        </a>
+</card>
 
-                    </card>
+@endforeach
 
-                @endforeach
+@else
 
-            @else
+<h1>Aucun film</h1>
 
-                <h1>Aucun film</h1>
+@endif
 
-            @endif
 
+        @endrole
+        @role('normal')
+        <h1 id="tvShows">Film pour une auditoire mature</h1>
+
+        <div class="box">
+            @if($films18->count() > 0)
+
+            @foreach($films18 as $film)
+            <card>
+
+<a href="{{route('films.show',[$film])}}">
+
+       
+
+        <img src="{{$film->urlaffiche}}" alt="">
+
+    </a>
+
+</card>
+
+@endforeach
+
+@else
+
+<h1>Aucun film</h1>
+
+@endif
+
+
+        @endrole
+
+        @role('enfant')
+        <h1 id="tvShows">Film pour une auditoire tout publique</h1>
+
+        <div class="box">
+            @if($filmsTP->count() > 0)
+
+            @foreach($filmsTP as $film)
+            <card>
+
+<a href="{{route('films.show',[$film])}}">
+
+       
+
+        <img src="{{$film->urlaffiche}}" alt="">
+
+    </a>
+
+</card>
+
+@endforeach
+
+@else
+
+<h1>Aucun film</h1>
+
+@endif
+
+
+        @endrole
+                    
         </div>
-
     </section>
 @else
 <p>pas de films</p>
