@@ -32,14 +32,14 @@ Route::resource('Films',FilmController::class);
 Route::get('Films/{film}/',
     [FilmController::class,'show'])->name('films.show');
 
-    Route::get('Films.create',[FilmController::class,'create'])->name('films.create');
+    Route::get('Films.create',[FilmController::class,'create'])->name('films.create')->middleware('CheckRole:admin');
 
-    Route::post('Films.store',[FilmController::class,'store'])->name('films.store');
+    Route::post('Films.store',[FilmController::class,'store'])->name('films.store')->middleware('CheckRole:admin');
 
 Route::get('Films/{film}/edit',
-    [FilmController::class,'edit'])->name('films.edit');
+    [FilmController::class,'edit'])->name('films.edit') ->middleware('CheckRole:admin');
 
 Route::resource('Personnes', PersonneController::class);
 
 Route::delete('Films/{id}',
-    [FilmController::class,'destroy'])->name('films.destroy');
+    [FilmController::class,'destroy'])->name('films.destroy')->middleware('CheckRole:admin');

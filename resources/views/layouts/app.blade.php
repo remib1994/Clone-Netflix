@@ -19,10 +19,15 @@
     <div class="netflixLogo">
         <a id="logo" href="{{route('Films.index')}}"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/799px-Netflix_2015_logo.svg.png" alt="Logo Image"></a>
     </div>
+    @auth
+    @if(isset($films))
     <nav class="main-nav">
         <a href="{{route('Films.index')}}">Films</a>
         <a href="{{route('Personnes.index')}}">Afficher Personne</a>
     </nav>
+    @else 
+    @endif
+    @endauth
     <nav class="sub-nav">
         <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
         <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a>

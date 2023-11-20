@@ -6,6 +6,8 @@
 
   
 <section class="main-container " >
+    @auth
+@if(isset($films))
         <div class="text-center">
             <h1 class="text-5xl text-blue-600"> Affichage de film</h1>
 
@@ -13,7 +15,7 @@
         <div class="location " id="home">
             <h1 class="text-3xl" id="home">Tous les personnes</h1>
             <div class="">
-                @if(isset($films))
+             
                         <a href="" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                             <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{$films->urlaffiche}}" alt="">
                             <div class="flex flex-col justify-between p-4 leading-normal">
@@ -29,12 +31,14 @@
                                 audience : {{$films->audience}} <br>
                                 pays : {{$films->pays}}<br>
                                 trailer : {{$films->urltrailer}}<br>
+                                @role('admin')
                                 <a href="{{route('Films.edit',[$films])}}">modifier</a>
                                 <form method="post" action="{{route('Films.destroy',[$films->id])}}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit">supprimer</button>
                                </form>
+                                 @endrole
                                 </p>
                             </div>
                         </a>
@@ -43,7 +47,7 @@
                         @if($films->acteurs->count() > 0)
                         acteur:
                         @foreach($films->acteurs as $acteur)
-                                 {{$acteur->nom}} {{$acteur->prenom}}
+                                 <p>( {{$acteur->nom}} {{$acteur->prenom}} )</p>
                         @endforeach
                         @else
                         aucun acteurs
@@ -52,6 +56,15 @@
                         <p>pas de films selectionner</p>
                         <a href="{{route('Films.index')}}">retour</a>
                          @endif
+                       
+        <form method="post" action="{{route('logout')}}">
+            @csrf
+            <button type="submit">deconnexion</button>
+        </form>
+        @else
+        <h1>vous n'etes pas connecter</h1>
+        <a href="{{route('showLoginForm')}}">connexion</a>
+        @endauth
 
         </section>
         @if(isset($errors) && $errors->any())
@@ -64,4 +77,8 @@
             </ul>
         </div>
         @endif
+        
     @endsection
+ <div></div>
+ <div></div>
+ <div></div>

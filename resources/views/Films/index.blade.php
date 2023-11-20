@@ -7,13 +7,16 @@
 @section('contenu')
 
 
-
+@auth
+@if(count($films))
     <section class="main-container" >
 
         <div class="location" id="home">
             
             <h1 id="home">Tous les films</h1>
+            @role('admin')
             <a href="{{route('films.create')}}">Ajouter un film</a>
+            @endrole
             <div class="box">
 
                 @if($films->count() > 0)
@@ -163,7 +166,18 @@
         </div>
 
     </section>
+@else
+<p>pas de films</p>
+@endif
 
+<form method="post" action="{{route('logout')}}">
+    @csrf
+    <button type="submit">deconnexion</button>
+</form>
+@else
+<h1>vous devez vous connecter</h1>
+<a href="{{route('login')}}">se connecter</a>
+@endauth
 
 
     <!-- END OF MAIN CONTAINER -->
