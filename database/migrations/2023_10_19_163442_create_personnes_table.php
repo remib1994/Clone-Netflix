@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->string('prenom');
             $table->dateTime('date_naissance');
             $table->string('nationalite');
-            $table->string('sexe');
+            $table->enum('sexe',['homme','femme','non-binaire']);
             $table->string('urlphoto')->nullable();
             $table->string('role');
             $table->timestamps();
