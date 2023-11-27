@@ -21,7 +21,6 @@ class UsagersController extends Controller
             return redirect()->route('showLoginForm')->withErrors(['Informations invalides.']);
         }
     }
-
     public function showLoginForm(){
         return view('Auth.login');
     }
@@ -46,6 +45,7 @@ class UsagersController extends Controller
     {
 
     }
+
     public function logout(){
         Auth::logout();
         return redirect()->route('showLoginForm')->with('message','Déconnexion réussi.');

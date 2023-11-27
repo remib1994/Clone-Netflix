@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
+
 module.exports = {
     darkMode: 'class',
     content: [
@@ -13,6 +14,7 @@ module.exports = {
                     2: '#0076D5',
                     3: '#0B2341',
                 },
+                primary: '#141414'
             },
         },
     },
