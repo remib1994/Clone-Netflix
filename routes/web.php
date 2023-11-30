@@ -28,8 +28,7 @@ Route::controller(UsagersController::class)->prefix('login')->group(function () 
 /*Route::post('destroy', [UsagersController::class, 'destroy'])->name('logout');*/
 
 Route::resource('Films',FilmController::class);
-
-Route::resource('Personnes',PersonneController::class)->only(['index', 'edit','update','destroy', 'create', 'store','show']);
+Route::resource('Personnes',PersonneController::class)->only(['index', 'edit','update','destroy', 'create', 'store','show'])->middleware('CheckRole:admin');
 Route::controller(PersonneController::class)->prefix('Personnes')->group(function () {
     Route::post('attach', 'attach')->name('ActeurFilm.attach');
     Route::post('detach', 'detach')->name('ActeurFilm.detach');
@@ -44,7 +43,6 @@ Route::get('Films/{film}/',
 Route::get('Films/{film}/edit',
     [FilmController::class,'edit'])->name('films.edit') ->middleware('CheckRole:admin');
 
-Route::resource('Personnes', PersonneController::class);
 
 Route::delete('Films/{id}',
     [FilmController::class,'destroy'])->name('films.destroy')->middleware('CheckRole:admin');
