@@ -11,11 +11,27 @@
 @if(count($films))
     <section class="main-container" >
 
-        <div class="location" id="home">
+        <div class="text-center">
             
             <h1 id="home">Tous les films</h1>
+            </div>
+            </div>
+
             @role('admin')
-            <a href="{{route('films.create')}}">Ajouter un film</a>
+            <div class="flex flex-row">
+            <h2 class="text-3xl w-10/12" id="home">Tous les films</h2>
+                <div class="ml-2 w-1/12">
+                    <a class="flex flex-row text-white  dark:text-black hover:bg-red-700  font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:hover:font-bold dark:hover:text-black" href="{{route('films.create')}}">
+                        <svg class="m-auto mr-2 w-[14px] h-[14px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+                        </svg>
+                        Nouveau film
+                    </a>
+                </div>
+
+
+
+        </div>
             @endrole
             <div class="box">
 

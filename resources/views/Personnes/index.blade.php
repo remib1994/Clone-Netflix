@@ -9,6 +9,7 @@
             </div>
 
         </div>
+        @role('admin')
         <div class="flex flex-row">
 
             <h2 class="text-3xl w-10/12" id="home">Tous les personnes</h2>
@@ -24,6 +25,7 @@
 
 
         </div>
+        @endrole
         <div class="flex flex-row shrink-0 ">
 
             @if($personnes->count() > 0)
