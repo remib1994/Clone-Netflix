@@ -41,7 +41,7 @@
 
                         <a href="{{route('films.show',[$film])}}">
 
-                         
+
 
                             <img src="{{$film->urlaffiche}}" alt="">
 
@@ -75,7 +75,7 @@
 
                 <a href="{{route('films.show',[$film])}}">
 
-                        
+
 
                         <img src="{{$film->urlaffiche}}" alt="">
 
@@ -105,7 +105,7 @@
 
                 <a href="{{route('films.show',[$film])}}">
 
-                        
+
 
                         <img src="{{$film->urlaffiche}}" alt="">
 
@@ -135,7 +135,7 @@
 
                 <a href="{{route('films.show',[$film])}}">
 
-                        
+
 
                         <img src="{{$film->urlaffiche}}" alt="">
 
@@ -153,9 +153,9 @@
 
 
 
-        
-       
-         @role('admin')
+
+
+         @role('admin','normal')
         <h1 id="tvShows">Film pour une auditoire mature</h1>
         <div class="box">
             @if($films18->count() > 0)
@@ -165,36 +165,7 @@
 
 <a href="{{route('films.show',[$film])}}">
 
-       
 
-        <img src="{{$film->urlaffiche}}" alt="">
-
-    </a>
-
-</card>
-
-@endforeach
-
-@else
-
-<h1>Aucun film</h1>
-
-@endif
-
-
-        @endrole
-        @role('normal')
-        <h1 id="tvShows">Film pour une auditoire mature</h1>
-
-        <div class="box">
-            @if($films18->count() > 0)
-
-            @foreach($films18 as $film)
-            <card>
-
-<a href="{{route('films.show',[$film])}}">
-
-       
 
         <img src="{{$film->urlaffiche}}" alt="">
 
@@ -224,7 +195,7 @@
 
 <a href="{{route('films.show',[$film])}}">
 
-       
+
 
         <img src="{{$film->urlaffiche}}" alt="">
 
@@ -242,7 +213,7 @@
 
 
         @endrole
-                    
+
         </div>
     </section>
 @else
