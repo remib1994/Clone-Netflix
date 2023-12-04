@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Film;
 use App\Models\Personne;
 use Illuminate\Support\Facades\Log;
+use App\Http\Requests\FilmRequest;
 
 class FilmController extends Controller
 {
@@ -63,9 +64,10 @@ class FilmController extends Controller
             $film->producteur_id = $request->producteur_id;
             $film->description = $request->description;
             $film->urlaffiche = $request->urlaffiche;
-            $film->datesortie = $request->datesortie;
+            $film->datesortie = $request->dateS;
             $film->rating = $request->rating;
             $film->urltrailer = $request->urltrailer;
+           
 
 
             $film->save();
