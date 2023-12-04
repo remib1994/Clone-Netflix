@@ -15,7 +15,7 @@ class PersonneFactory extends Factory
         return [
             'nom' => $this->faker->lastName(),
             'prenom' => $this->faker->firstName(),
-            'date_naissance' => $this->faker->dateTime(),
+            'date_naissance' => $this->faker->date('Y-m-d','now'),
             'nationalite' => $this->faker->randomElement(['France', 'USA', 'UK','Canada', 'Espagne', 'Italie', 'Allemagne',
                 'Japon', 'Chine', 'Corée du Sud', 'Autre']),
             'sexe' => $this->faker->randomElement(['homme','femme','non-binaire']),

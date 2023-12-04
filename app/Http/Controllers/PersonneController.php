@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Film;
 use Illuminate\Http\Request;
 use App\Models\Personne;
+use Illuminate\Support\Facades\Log;
 
 class PersonneController extends Controller
 {
@@ -39,7 +40,15 @@ class PersonneController extends Controller
          */
         public function store(Request $request)
     {
-        //
+        try{
+            $personne = new Personne($request->all());
+            $personne->save();
+            $personne::findlast();
+        }
+        catch (\throwable $e){
+            Log::debug($e);
+        }
+        return redirect()->route('Personnes.edit', $personne->id);
     }
 
         /**

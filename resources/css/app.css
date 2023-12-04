@@ -63,6 +63,7 @@
         rounded-lg
         border border-red-950
         hover:text-2xl
+        focus:text-2xl
 
     }
 }

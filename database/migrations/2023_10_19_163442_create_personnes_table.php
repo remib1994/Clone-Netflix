@@ -11,11 +11,11 @@ return new class extends Migration {
             $table->id();
             $table->string('nom');
             $table->string('prenom');
-            $table->dateTime('date_naissance');
+            $table->date('date_naissance');
             $table->string('nationalite');
             $table->enum('sexe',['homme','femme','non-binaire']);
             $table->string('urlphoto')->nullable();
-            $table->string('role');
+            $table->enum('role',['acteur', 'réalisateur', 'producteur',]);
             $table->timestamps();
         });
     }
