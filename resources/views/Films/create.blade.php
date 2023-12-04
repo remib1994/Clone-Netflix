@@ -2,77 +2,137 @@
 @section('title',"Creation Film")
 
 @section('contenu')
-    <h1>Formulaire de creation Films</h1>
-    <form method="post" action="{{route('films.store')}}">
-        @csrf
-        @titre
-        <div class="form-group">
-            <label for="titre">Titre</label>
-            <input  type="text" name="titre" id="titre" class="form-control red" placeholder="Titre du film" >
-            
+<section class="main-container" >
+        <div class="w-6/12 justify-center text-center mx-auto">
+            <h2>Création de Film</h2>
         </div>
-        @description
-        <div class="form-group">
-            <label for="description">Description</label>
-            <input type="text" name="description" id="description" class="form-control red" placeholder="Description du film" >
+        <div class="w-3/12 justify-end text-right mx-auto">
+            <div class="flex-row">
+                <div class="py-1">
+                    <label for="nom">Titre : </label>
+                    <input type="text" name="nom" id="nom" class="inputForm" value="{{old('nom')}}">
+                </div>
+                <div class="py-1">
+                    <label for="prenom">Description : </label>
+                    <input type="text" name="prenom" id="prenom" class="inputForm" value="{{old('prenom')}}">
+                </div>
+                <div class="py-1">
+                    <label for="dateNaissance">date sortie :</label>
+                    <input type="date" name="dateNaissance" id="dateNaissance" class="inputForm" value="{{old('dateNaissance')}}">
+                </div>
+                <div class="py-1">
+                    <label for="nationalite">image: </label>
+                    <input type="text" name="nationalite" id="nationalite" class="inputForm" value="{{old('nationalite')}}">
+                </div>
+                <hr class="w-48 h-1 mx-auto bg-red-800 border-0 rounded  my-2">
+                <div class="py-1">
+                    <div class="text-center">
+                        <p class="font-bold pb-2 h-auto">univers</p>
+                    </div>
+
+                    <label for ="sexeH">Action</label>
+                    <input type="radio" name="sexe" id="sexeH" class="inputForm"  value="homme">
+                    <label for ="sexeF">Aventure</label>
+                    <input type="radio" name="sexe" id="sexeF" class="inputForm" value="femme">
+                    <label for ="sexeNB">Comédie</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="non-binaire">
+                    <label for ="sexeNB">Drama</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="non-binaire">
+                    <label for ="sexeNB">Fantastique</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="non-binaire">
+                    <label for ="sexeNB">Horreur</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="non-binaire">
+                    <label for ="sexeNB">Policier</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="non-binaire">
+                    <label for ="sexeNB">Science-fiction</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="non-binaire">
+                    <label for ="sexeNB">Thriller</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="non-binaire">
+               
+                </div>
+                <div>
+                <hr class="w-48 h-1 mx-auto bg-red-600 border-0 rounded my-2">
+
+                <div class="py-1">
+                    <div class="text-center">
+                        <p class="font-bold pb-2">audience</p>
+                    </div>
+
+                    <label for ="sexeH">tout publique</label>
+                    <input type="radio" name="sexe" id="sexeH" class="inputForm"  value="TP">
+                    <label for ="sexeF">10+</label>
+                    <input type="radio" name="sexe" id="sexeF" class="inputForm" value="10">
+                    <label for ="sexeNB">12+</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="12">
+                    <label for ="sexeNB">16+</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="16">
+                    <label for ="sexeNB">18+</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="18">
+               
+                </div>
+                <hr class="w-48 h-1 mx-auto bg-red-800 border-0 rounded  my-2">
+                <div class="py-1">
+                    <div class="text-center">
+                        <p class="font-bold pb-2 h-auto">univers</p>
+                    </div>
+
+                    <label for ="sexeH">DC</label>
+                    <input type="radio" name="sexe" id="sexeH" class="inputForm"  value="homme">
+                    <label for ="sexeF">Marvel</label>
+                    <input type="radio" name="sexe" id="sexeF" class="inputForm" value="femme">
+                    <label for ="sexeNB">Autre</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="non-binaire">
+                </div>
+                <div>
+                <hr class="w-48 h-1 mx-auto bg-red-800 border-0 rounded  my-2">
+                <div class="py-1">
+                    <div class="text-center">
+                        <p class="font-bold pb-2 h-auto">univers</p>
+                    </div>
+
+                    <label for ="sexeH">Canada</label>
+                    <input type="radio" name="sexe" id="sexeH" class="inputForm"  value="homme">
+                    <label for ="sexeF">France</label>
+                    <input type="radio" name="sexe" id="sexeF" class="inputForm" value="femme">
+                    <label for ="sexeNB">USA</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="non-binaire">
+                    <label for ="sexeNB">UK</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="non-binaire">
+                    <label for ="sexeNB">Espagne</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="non-binaire">
+                    <label for ="sexeNB">Italie</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="non-binaire">
+                    <label for ="sexeNB">Allemagne</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="non-binaire">
+                    <label for ="sexeNB">Japon</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="non-binaire">
+                    <label for ="sexeNB">Chine</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="non-binaire">
+                    <label for ="sexeNB">Corée du Sud</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="non-binaire">
+                    <label for ="sexeNB">Autre</label>
+                    <input type="radio" name="sexe" id="sexeNB" class="inputForm" value="non-binaire">
+                                    
+                </div>
+                <div>
+                <hr class="w-48 h-1 mx-auto bg-red-800 border-0 rounded  my-2">
+                <label for="realisateur">Réalisateur : </label>
+                <select name="realisateur" id="realisateur" class="inputForm">
+                    @foreach($realisateurs as $realisateur)
+                        <option value="{{$realisateur->id}}">{{$realisateur->nom}} {{$realisateur->prenom}}</option>
+                    @endforeach
+                </select>
+                <hr class="w-48 h-1 mx-auto bg-red-800 border-0 rounded  my-2">
+                <label for="producteur">Producteur : </label>
+                <select name="producteur" id="producteur" class="inputForm">
+                    @foreach($producteurs as $producteur)
+                        <option value="{{$producteur->id}}">{{$producteur->nom}} {{$producteur->prenom}}</option>
+                    @endforeach
+                </div>
             </div>
-        @urlaffiche
-        <div class="form-group">
-            <label for="urlaffiche">Url de l'affiche</label>
-            <input type="text" name="urlaffiche" id="urlaffiche" class="form-control red" placeholder="Url de l'affiche" >
-            
         </div>
-        @genre
-        <div class="form-group">
-            <label for="genre">Genre</label>
-            <input type="text" name="genre" id="genre" class="form-control red" placeholder="Genre du film" >
-            
-        </div>
-        @pays
-        <div class="form-group">
-            <label for="pays">Pays</label>
-            <input type="text" name="pays" id="pays" class="form-control red" placeholder="Pays du film">
-            
-        </div>
-        @univers
-        <div class="form-group">
-            <label for="univers">Univers</label>
-            <input type="text" name="univers" id="univers" class="form-control red" placeholder="Univers du film" >
-            
-        </div>
-        @audience
-        <div class="form-group">
-            <label for="audience">Audience</label>
-            <input type="text" name="audience" id="audience" class="form-control red" placeholder="Audience du film" >
-            
-        </div>
-        @datesortie
-        <div class="form-group">
-            <label for="datesortie">Date de sortie</label>
-            <input type="date" name="datesortie" id="datesortie" class="form-control red" placeholder="Date de sortie du film" >
-            </div>
-@rating
-        <div class="form-group">
-            <label for="rating">Rating</label>
-            <input type="text" name="rating" id="rating" class="form-control red" placeholder="Rating du film" >
-            </div>
-        @realisateur_id
-        <select name="realisateur_id" id="realisateur_id" class="red">
-            @foreach($realisateurs as $realisateur)
-                <option value="{{$realisateur->id}}" class="red">{{$realisateur->nom}}</option>
-            @endforeach
-        </select>
-        @producteur_id
-        <select name="producteur_id" id="producteur_id" class="red">
-            @foreach($producteurs as $producteur)
-                <option value="{{$producteur->id}}" class="red">{{$producteur->nom}}</option>
-            @endforeach
-        </select>
-        @urltrailer
-        <div class="form-group">
-            <label for="urltrailer">Url du trailer</label>
-            <input type="text" name="urltrailer" id="urltrailer" class="form-control red" placeholder="Url du trailer du film" >
-            </div>
-        <button type="submit" class="btn btn-primary">Ajouter</button>
-        </form>
+
+    </section>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Créer</button>
+    </form>
 @endsection

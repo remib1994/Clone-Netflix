@@ -9,23 +9,25 @@
             </div>
 
         </div>
-        @role('admin')
+       
         <div class="flex flex-row">
 
             <h2 class="text-3xl w-10/12" id="home">Tous les personnes</h2>
                 <div class="ml-2 w-1/12">
+                @role('admin')
                     <a class="flex flex-row text-white  dark:text-black hover:bg-red-700  font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:hover:font-bold dark:hover:text-black" href="{{route('Personnes.create')}}">
                         <svg class="m-auto mr-2 w-[14px] h-[14px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
                         </svg>
                         Nouvelle Personne
                     </a>
+                    @endrole
                 </div>
 
 
 
         </div>
-        @endrole
+       
         <div class="flex flex-row shrink-0 ">
 
             @if($personnes->count() > 0)
