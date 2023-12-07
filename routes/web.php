@@ -33,6 +33,10 @@ Route::controller(PersonneController::class)->prefix('Personnes')->group(functio
     Route::post('attach', 'attach')->name('ActeurFilm.attach');
     Route::post('detach', 'detach')->name('ActeurFilm.detach');
 });
+Route::controller(FilmController::class)->prefix('Films')->group(function () {
+    Route::post('attach', 'attach')->name('FilmActeur.attach');
+    Route::post('detach', 'detach')->name('FilmActeur.detach');
+});
 Route::get('Films/{film}/',
     [FilmController::class,'show'])->name('films.show');
 

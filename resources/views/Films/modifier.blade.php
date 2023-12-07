@@ -81,5 +81,45 @@
             </div>
         <button type="submit" class="btn btn-primary">Ajouter</button>
         </form>
+        <form action="{{route('FilmActeur.detach')}}"  method="post">
+            @csrf
+            <input type="hidden" name="film_id" value="{{$films->id}}">
+            <div class="flex">
+                <div class="flex relative w-full">
+                    <select name="acteur_id" id="acteur_id" class="text-black bg-gray-100 border-2 w-full p-4 rounded-lg @error('departement_id') border-red-500 @enderror">
+                        <option value="">--Choisir un acteur à enlever--</option>
+                        @foreach($acteursFilm as $acteur)
+                            <option value="{{$acteur->id}}">
+                                {{$acteur->nom}} {{$acteur->prenom}}
+                            </option>
+                        @endforeach
+                    </select>
+                    <button type="submit" class="btnSelect">
+                        Enlever
+
+                    </button>
+                </div>
+            </div>
+        </form>
+        <form action="{{route('FilmActeur.attach')}}"  method="post">
+            @csrf
+            <input type="hidden" name="film_id" value="{{$films->id}}">
+            <div class="flex">
+                <div class="flex relative w-full">
+                    <select name="acteur_id" id="acteur_id" class="text-black bg-gray-100 border-2 w-full p-4 rounded-lg @error('departement_id') border-red-500 @enderror">
+                        <option value="">--Choisir un acteur à rajouter--</option>
+                        @foreach($acteurs as $acteur)
+                            <option value="{{$acteur->id}}">
+                                {{$acteur->nom}} {{$acteur->prenom}}
+                            </option>
+                        @endforeach
+                    </select>
+                    <button type="submit" class="btnSelect">
+                        Ajouter
+                    </button>
+                </div>
+            </div>
+        </form>
+        </div>
 
 @endsection

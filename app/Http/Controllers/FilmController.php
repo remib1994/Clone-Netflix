@@ -98,9 +98,12 @@ class FilmController extends Controller
     {
         $realisateur = Personne::all();
         $producteur = Personne::all();
+        $acteurs = Personne::all();
+        $acteursFilm = Film::find($id)->acteurs;
         $films = Film::findOrFail($id);
         return View('Films.modifier', [
-
+            'acteursFilm'=>$acteursFilm,
+            'acteurs'=>$acteurs,
             'realisateurs'=>$realisateur,
             'producteurs'=>$producteur,
             'films'=>$films,
@@ -155,5 +158,18 @@ class FilmController extends Controller
             return redirect()->route('films.index');
         }
 
+    }
+    public function attach(Request $request)
+    {
+        $film = Film::find($request->film_id);
+        $film->acteurs()->attach($request->acteur_id);
+        return redirect()->route('films.edit', $request->film_id);
+
+    }
+    public function detach(Request $request)
+    {
+        $film = Film::find($request->film_id);
+        $film->acteurs()->detach($request->acteur_id);
+        return redirect()->route('films.edit', $request->film_id);
     }
 }
