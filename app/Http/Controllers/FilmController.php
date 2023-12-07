@@ -54,6 +54,7 @@ class FilmController extends Controller
     public function store(Request $request)
     {
         try{
+            
             $film = new Film();
             $film->titre = $request->titre;
             $film->genre = $request->genre;
@@ -64,10 +65,21 @@ class FilmController extends Controller
             $film->producteur_id = $request->producteur;
             $film->description = $request->description;
             $film->urlaffiche = $request->urlaffiche;
-            $film->datesortie = $request->dateS;
+            $film->datesortie = $request->datesortie;
             $film->rating = $request->rating;
             $film->urltrailer = $request->urltrailer;
            
+            $uploadedFile = $request->file('urlaffiche');
+           
+            $nomFichierUnique = str_replace('','_',$film->titre). '-' . uniqid() . '.' . $uploadedFile->extension();
+            try{
+                $request->urlaffiche->move(public_path('img/films'), $nomFichierUnique);
+            }
+            catch(\Symfony\Component\HttpFoundation\File\Exception\FileException $e){
+                Log::error("Impossible de copier le fichier dans le dossier img/films");
+            }
+            $film->urlaffiche = $nomFichierUnique;
+
 
 
             $film->save();
@@ -75,6 +87,7 @@ class FilmController extends Controller
         }
         catch(\Throwable $e){
            Log::debug($e);
+           return redirect()->route('Films.index')->with('error','Impossible de créer le film');
         }
         return redirect()->route('Films.index');
     }

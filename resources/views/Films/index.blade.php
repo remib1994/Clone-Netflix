@@ -46,7 +46,7 @@
 
 
 
-                            <img src="{{$film->urlaffiche}}" alt="">
+                            <img src="{{asset('img/films/' . $film->urlaffiche)}}" alt="{{$film->titre}}" title="{{$film->titre}}">
 
                         </a>
 
@@ -57,9 +57,7 @@
                     <h1>Aucun film</h1>
 
                 @endif
-@role('admin')
-<p>vous etes admin ou normal</p>
-@endrole
+
 
 
 

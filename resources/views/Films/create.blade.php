@@ -8,7 +8,7 @@
         </div>
         <div class="w-3/12 justify-end text-right mx-auto">
             <div class="flex-row">
-                <form action="{{route('films.store')}}" method="post">
+                <form action="{{route('films.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     
                      
@@ -21,13 +21,13 @@
                     <input type="text" name="description" id="description" class="inputForm" value="{{old('prenom')}}">
                 </div>
                 <div class="py-1">
-                    <label for="dateS">date sortie :</label>
-                    <input type="date" name="dateS" id="dateS" class="inputForm" value="{{old('dateNaissance')}}">
+                    <label for="datesortie">date sortie :</label>
+                    <input type="date" name="datesortie" id="datesortie" class="inputForm" >
                 </div>
                 
                 <div class="py-1">
                     <label for="urlaffiche">url affiche : </label>
-                    <input type="text" name="urlaffiche" id="urlaffiche" class="inputForm" value="{{old('nationalite')}}">
+                    <input type="file" class="form-control-file" id="urlaffiche" name="urlaffiche" >
                 </div>
                 <div class ="py-1">
                     <label for="rating">Rating : </label>
@@ -69,15 +69,15 @@
                     </div>
 
                     <label for ="tp">tout publique</label>
-                    <input type="radio" name="audience" id="sexeH" class="inputForm"  value="TP">
+                    <input type="radio" name="audience" id="TP" class="inputForm"  value="TP">
                     <label for ="10">10+</label>
-                    <input type="radio" name="audience" id="sexeF" class="inputForm" value="10">
+                    <input type="radio" name="audience" id="10" class="inputForm" value="10">
                     <label for ="12">12+</label>
-                    <input type="radio" name="audience" id="sexeNB" class="inputForm" value="12">
+                    <input type="radio" name="audience" id="12" class="inputForm" value="12">
                     <label for ="16">16+</label>
-                    <input type="radio" name="audience" id="sexeNB" class="inputForm" value="16">
+                    <input type="radio" name="audience" id="16" class="inputForm" value="16">
                     <label for ="18">18+</label>
-                    <input type="radio" name="audience" id="sexeNB" class="inputForm" value="18">
+                    <input type="radio" name="audience" id="18" class="inputForm" value="18">
                
                 </div>
                 <hr class="w-48 h-1 mx-auto bg-red-800 border-0 rounded  my-2">
@@ -87,11 +87,11 @@
                     </div>
 
                     <label for ="dc">DC</label>
-                    <input type="radio" name="univers" id="sexeH" class="inputForm"  value="DC">
+                    <input type="radio" name="univers" id="DC" class="inputForm"  value="DC">
                     <label for ="mar">Marvel</label>
-                    <input type="radio" name="univers" id="sexeF" class="inputForm" value="Marvel">
+                    <input type="radio" name="univers" id="Marvel" class="inputForm" value="Marvel">
                     <label for ="autre">Autre</label>
-                    <input type="radio" name="univers" id="sexeNB" class="inputForm" value="autre">
+                    <input type="radio" name="univers" id="autre" class="inputForm" value="autre">
                 </div>
                 <div>
                 <hr class="w-48 h-1 mx-auto bg-red-800 border-0 rounded  my-2">
