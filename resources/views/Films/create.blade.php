@@ -24,10 +24,16 @@
                     <label for="dateS">date sortie :</label>
                     <input type="date" name="dateS" id="dateS" class="inputForm" value="{{old('dateNaissance')}}">
                 </div>
+                
                 <div class="py-1">
-                    <label for="img">image: </label>
-                    <input type="text" name="img" id="img" class="inputForm" value="{{old('nationalite')}}">
+                    <label for="urlaffiche">url affiche : </label>
+                    <input type="text" name="urlaffiche" id="urlaffiche" class="inputForm" value="{{old('nationalite')}}">
                 </div>
+                <div class ="py-1">
+                    <label for="rating">Rating : </label>
+                    <input type="text" name="rating" id="rating" class="inputForm" value="{{old('nationalite')}}">
+                </div>
+
                 <hr class="w-48 h-1 mx-auto bg-red-800 border-0 rounded  my-2">
                 <div class="py-1">
                     <div class="text-center">
@@ -95,27 +101,27 @@
                     </div>
 
                     <label for ="sexeH">Canada</label>
-                    <input type="radio" name="pays" id="sexeH" class="inputForm"  value="Canada">
+                    <input type="radio" name="pays" id="Canada" class="inputForm"  value="Canada">
                     <label for ="sexeF">France</label>
-                    <input type="radio" name="pays" id="sexeF" class="inputForm" value="France">
+                    <input type="radio" name="pays" id="France" class="inputForm" value="France">
                     <label for ="sexeNB">USA</label>
-                    <input type="radio" name="pays" id="sexeNB" class="inputForm" value="USA">
+                    <input type="radio" name="pays" id="USA" class="inputForm" value="USA">
                     <label for ="sexeNB">UK</label>
-                    <input type="radio" name="pays" id="sexeNB" class="inputForm" value="UK">
+                    <input type="radio" name="pays" id="UK" class="inputForm" value="UK">
                     <label for ="sexeNB">Espagne</label>
-                    <input type="radio" name="pays" id="sexeNB" class="inputForm" value="Espagne">
+                    <input type="radio" name="pays" id="Espagne" class="inputForm" value="Espagne">
                     <label for ="sexeNB">Italie</label>
-                    <input type="radio" name="pays" id="sexeNB" class="inputForm" value="Italie">
+                    <input type="radio" name="pays" id="Italie" class="inputForm" value="Italie">
                     <label for ="sexeNB">Allemagne</label>
-                    <input type="radio" name="pays" id="sexeNB" class="inputForm" value="Allemagne">
+                    <input type="radio" name="pays" id="Allemagne" class="inputForm" value="Allemagne">
                     <label for ="sexeNB">Japon</label>
-                    <input type="radio" name="pays" id="sexeNB" class="inputForm" value="Japon">
+                    <input type="radio" name="pays" id="Japon" class="inputForm" value="Japon">
                     <label for ="sexeNB">Chine</label>
-                    <input type="radio" name="pays" id="sexeNB" class="inputForm" value="Chine">
+                    <input type="radio" name="pays" id="Chine" class="inputForm" value="Chine">
                     <label for ="sexeNB">Corée du Sud</label>
-                    <input type="radio" name="pays" id="sexeNB" class="inputForm" value="Corée du Sud">
+                    <input type="radio" name="pays" id="Corée du Sud" class="inputForm" value="Corée du Sud">
                     <label for ="sexeNB">Autre</label>
-                    <input type="radio" name="pays" id="sexeNB" class="inputForm" value="Autre">
+                    <input type="radio" name="pays" id="Autre" class="inputForm" value="Autre">
                                     
                 </div>
                 <div>
@@ -123,17 +129,23 @@
                 <label for="realisateur">Réalisateur : </label>
                 <select name="realisateur_id" id="realisateur_id" class="inputForm">
                     @foreach($realisateurs as $realisateur)
-                        <option value="{{$realisateur->id}}">{{$realisateur-­>id}} {{$realisateur->nom}} {{$realisateur->prenom}}</option>
+                        <option value="{{$realisateur->id}}"> {{$realisateur->nom}} {{$realisateur->prenom}}</option>
                     @endforeach
                 </select>
                 <hr class="w-48 h-1 mx-auto bg-red-800 border-0 rounded  my-2">
                 <label for="producteur">Producteur : </label>
                 <select name="producteur" id="producteur" class="inputForm">
                     @foreach($producteurs as $producteur)
-                        <option value="{{$producteur->id}}">{{$producteur->nom}} {{$producteur->prenom}}</option>
+                        <option value="{{$producteur->id}} "> {{$producteur->nom}} {{$producteur->prenom}}</option>
                     @endforeach
                     </select>
                 </div>
+                <div>
+                <hr class="w-48 h-1 mx-auto bg-red-800 border-0 rounded  my-2">
+                <label for="urltrailer">url trailer : </label>
+                <input type="text" name="urltrailer" id="urltrailer" class="inputForm" value="{{old('nationalite')}}">
+                </div>
+                
             </div>
            
         </div>

@@ -38,8 +38,8 @@ class FilmController extends Controller
      */
     public function create()
     {
-        $realisateur = Personne::where('role', 'realisateur')->get();
-        $producteur = Personne::where('role', 'producteur')->get();
+        $realisateur = Personne::all();
+        $producteur = Personne::all();
         return View('Films.Create',[
 
             'realisateurs'=>$realisateur,
@@ -61,7 +61,7 @@ class FilmController extends Controller
             $film->univers = $request->univers;
             $film->audience = $request->audience;
             $film->realisateur_id = $request->realisateur_id;
-            $film->producteur_id = $request->producteur_id;
+            $film->producteur_id = $request->producteur;
             $film->description = $request->description;
             $film->urlaffiche = $request->urlaffiche;
             $film->datesortie = $request->dateS;
