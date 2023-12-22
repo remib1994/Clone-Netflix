@@ -47,7 +47,7 @@
                             <div class="rounded-lg bg-black w-48">
                                 <a href="{{route('Films.show',$film)}}">
                                     <div class="flex flex-col items-center py-10">
-                                        <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="img\Films\{{$film->urlaffiche}}" alt="{{$film->urlaffiche}}"/>
+                                        <img class="w-24 h-24 mb-3 border-red-950 border-2 shadow-lg" src="{{asset('img/films/'.$film->urlaffiche)}}" alt="{{$film->urlaffiche}}"/>
                                         <h5 class="indent-0 mb-1 text-xl font-medium text-gray-900">{{$film->titre}}</h5>
                                         <span class="">Rôle : Acteur</span>
                                         <span class="text-sm text-gray-500">{{ $film->datesortie}}</span>
@@ -61,7 +61,7 @@
                                 <div class="rounded-lg bg-black w-48">
                                     <a href="{{route('Films.show',$film)}}">
                                         <div class="flex flex-col items-center py-10">
-                                            <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="img\Films\{{$film->urlaffiche}}" alt="{{$film->urlaffiche}}"/>
+                                            <img class="w-24 h-24 mb-3 border-red-950 border-2 shadow-lg" src="{{asset('img/films/'.$film->urlaffiche)}}" alt="{{$film->urlaffiche}}"/>
                                             <h5 class="indent-0 mb-1 text-xl font-medium text-gray-900">{{$film->titre}}</h5>
                                             <span class="" >Rôle : Réalisateur</span>
                                             <span class="text-sm text-gray-500">{{ $film->datesortie}}</span>
@@ -75,7 +75,7 @@
                                 <div class="rounded-lg bg-black w-48">
                                     <a href="{{route('Films.show',$film)}}">
                                         <div class="flex flex-col items-center py-10">
-                                            <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="img\Films\{{$film->urlaffiche}}" alt="{{$film->urlaffiche}}"/>
+                                            <img class="w-24 h-24 mb-3 border-red-950 border-2 shadow-lg" src="{{asset('img/films/'.$film->urlaffiche)}}" alt="{{$film->urlaffiche}}"/>
                                             <h5 class="indent-0 mb-1 text-xl font-medium text-gray-900">{{$film->titre}}</h5>
                                             <span class="" >Rôle : Producteur</span>
                                             <span class="text-sm text-gray-500">{{ $film->datesortie}}</span>

@@ -48,7 +48,7 @@ class UsagersController extends Controller
             Log::debug($e);
         }
     }
-    public function edit(UsagerRequest $request,string $id)
+    public function edit(string $id)
     {
         $usager = Usager::findOrFail($id);
         return view('Usagers.edit',[
@@ -59,10 +59,10 @@ class UsagersController extends Controller
     {
         try{
             $usager = Usager::find($id);
-            $usager->password->update(Hash::make($request->password));
             $usager->update($request->all());
+            $usager->update(['password'=>Hash::make($request->password)]);
 
-            return view('Auth.login');
+            return view('Usagers.index');
         }
         catch (\throwable $e){
             Log::debug($e);

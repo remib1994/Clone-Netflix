@@ -10,9 +10,10 @@
         </div>
         <div class="w-6/12 justify-end text-right mx-auto">
             <div class="flex-wrap">
-                <form method="post" action="{{ route('Usagers.update') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('Usagers.update',$usager) }}" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
+                    @method('POST')
+                    <input type="hidden" name="id" value="{{$usager->id}}">
                     <div class="py-1">
                         <label for="email">email : </label>
                         <input type="email" name="email" id="email" class="inputForm" value="{{$usager->email}}">
@@ -23,15 +24,15 @@
                     </div>
                     <div class="py-1">
                         <label for="nomUsager">Username : </label>
-                        <input type="text" name="nomUsager" id="nomUsager" class="inputForm" >
+                        <input type="text" name="nomUsager" id="nomUsager" class="inputForm" value="{{$usager->nomUsager}}">
                     </div>
                     <div class="py-1">
                         <label for="nom">Nom : </label>
-                        <input type="text" name="nom" id="nom" class="inputForm" >
+                        <input type="text" name="nom" id="nom" class="inputForm" value="{{$usager->nom}}">
                     </div>
                     <div class="py-1">
                         <label for="prenom">Prenom : </label>
-                        <input type="text" name="prenom" id="prenom" class="inputForm" >
+                        <input type="text" name="prenom" id="prenom" class="inputForm" value="{{$usager->prenom}}">
                     </div>
                     <hr class="w-48 h-1 mx-auto bg-red-600 border-0 rounded my-2">
 
@@ -51,11 +52,12 @@
                         </div>
                     </div>
                             <div class="text-center mx-auto">
-                            <input type="submit" value="Créer" class="  btnForm">
+                            <input type="submit" value="Modifier" class="  btnForm">
                             <input type="reset" value="Annuler" class=" btnForm">
+                            <a href="{{route('Usagers.index')}}" type="button" class=" btnForm">Retour</a>
                         </div>
                         <div class="text-center">
-                            <a href="{{route('login')}}" type="button" class=" btnForm">Login</a>
+                            <a href="{{route('Usagers.destroy',$usager)}}" type="button" class=" btnForm">Supprimer</a>
                         </div>
                     </div>
 

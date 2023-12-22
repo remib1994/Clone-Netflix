@@ -9,7 +9,7 @@
             </div>
             <div class="w-6/12 justify-end text-right mx-auto">
                 <div class="flex-wrap">
-                    <form method="post" action="{{ route('Personnes.update', $personne->id) }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('Personnes.update', $personne) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="py-1">

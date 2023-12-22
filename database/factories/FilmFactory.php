@@ -15,7 +15,7 @@ class FilmFactory extends Factory
         return [
             'titre' => $this->faker->unique()->sentence(3),
             'description' => $this->faker->text(200),
-            'urlaffiche' => $this->faker->imageUrl(640, 480, 'animals', true),
+            'urlaffiche' => "film".$this->faker->numberBetween(1, 10).".jpg",
             'realisateur_id' => $this->faker->numberBetween(1, 20),
             'producteur_id' => $this->faker->numberBetween(1, 20),
             'datesortie' => $this->faker->date(),

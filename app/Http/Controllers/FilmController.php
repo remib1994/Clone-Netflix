@@ -54,7 +54,7 @@ class FilmController extends Controller
     public function store(Request $request)
     {
         try{
-            
+
             $film = new Film();
             $film->titre = $request->titre;
             $film->genre = $request->genre;
@@ -68,9 +68,9 @@ class FilmController extends Controller
             $film->datesortie = $request->datesortie;
             $film->rating = $request->rating;
             $film->urltrailer = $request->urltrailer;
-           
+
             $uploadedFile = $request->file('urlaffiche');
-           
+
             $nomFichierUnique = str_replace('','_',$film->titre). '-' . uniqid() . '.' . $uploadedFile->extension();
             try{
                 $request->urlaffiche->move(public_path('img/films'), $nomFichierUnique);
@@ -130,7 +130,30 @@ class FilmController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        try {
+            $films = Film::find($id);
+            $films->urlaffiche = $request->urlaffiche;
+            $films->update($request->all());
 
+            $uploadedFile = $request->file('urlaffiche');
+            $nomFichierUnique = str_replace(' ', '_', $films->nom) . '-' . uniqid() . '.' . $uploadedFile->extension();
+
+            try {
+                $request->urlaffiche->move(public_path('img/films'), $nomFichierUnique);
+            }
+            catch(\Symfony\Component\HttpFoundation\File\Exception\FileException $e) {
+                Log::error("Erreur lors du téléversement du fichier. ", [$e]);
+            }
+
+            $films->urlaffiche = $nomFichierUnique;
+            $films->save();
+            return redirect()->route('Films.index');
+        }
+        catch (\Throwable $e) {
+            //Gérer l'erreur
+            Log::debug($e);
+            return redirect()->route('Films.edit',$films)->withErrors(['l\'ajout n\'a pas fonctionné']);
+        }
     }
 
     /**
@@ -164,11 +187,11 @@ class FilmController extends Controller
             $acteur->films()->attach($film);
             $acteur->save();
         }
-        return redirect()->route('films.show');
+        return redirect()->route('Films.show');
         }
         catch(\Throwable $e){
             Log::debug($e);
-            return redirect()->route('films.index');
+            return redirect()->route('Films.index');
         }
 
     }
@@ -176,13 +199,13 @@ class FilmController extends Controller
     {
         $film = Film::find($request->film_id);
         $film->acteurs()->attach($request->acteur_id);
-        return redirect()->route('films.edit', $request->film_id);
+        return redirect()->route('Films.edit', $request->film_id);
 
     }
     public function detach(Request $request)
     {
         $film = Film::find($request->film_id);
         $film->acteurs()->detach($request->acteur_id);
-        return redirect()->route('films.edit', $request->film_id);
+        return redirect()->route('Films.edit', $request->film_id);
     }
 }

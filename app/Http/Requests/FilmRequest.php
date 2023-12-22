@@ -22,18 +22,31 @@ class FilmRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'titre' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+            'titre' => 'required|string|max:255|min:3',
+            'description' => 'required|string|max:255|min:3',
             'datesortie' => 'required|date',
-            
-            'urltrailer' => 'required|string|max:255',
-            'genre' => 'required|string|max:255',
-            'univers' => 'required|string|max:255',
-            'audience' => 'required|string|max:255',
+            'urltrailer' => 'required|string|max:255|min:3',
+            'genre' => 'required|string|max:255|min:3',
+            'univers' => 'required|string|max:255|min:3',
+            'audience' => 'required|string',
             'pays' => 'required|string|max:255',
             'realisateur_id' => 'required|integer',
             'producteur_id' => 'required|integer',
             'rating' => 'required|numeric',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'required' => 'ce champ est requis.',
+            'min' => 'le champs doit contenir au moins 3 caractères.',
+            'max' => 'le champs doit contenir au maximum 255 caractères.',
+            'url' => 'le champs doit être une url, soit commencé par http ou https suivi de ://.',
+            'image' => 'L\'image d\'oit être de format suivant : jpg, jpeg',
+            'before' => 'la date doit être antérieur à aujourd\'hui.' . date('Y-m-d', strtotime('today')),
+            'urlphoto.max' => 'la taille de l\'image ne doit pas dépasser 4Mo',
+            'integer' => 'le champs doit être un nombre entier',
+            'date' => 'le champs doit être une date',
         ];
     }
 }

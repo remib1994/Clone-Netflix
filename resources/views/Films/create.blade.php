@@ -8,10 +8,10 @@
         </div>
         <div class="w-3/12 justify-end text-right mx-auto">
             <div class="flex-row">
-                <form action="{{route('films.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('Films.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    
-                     
+
+
                 <div class="py-1">
                     <label for="titre">Titre : </label>
                     <input type="text" name="titre" id="titre" class="inputForm" value="{{old('titre')}}">
@@ -24,7 +24,7 @@
                     <label for="datesortie">date sortie :</label>
                     <input type="date" name="datesortie" id="datesortie" class="inputForm" >
                 </div>
-                
+
                 <div class="py-1">
                     <label for="urlaffiche">url affiche : </label>
                     <input type="file" class="form-control-file" id="urlaffiche" name="urlaffiche" >
@@ -58,7 +58,7 @@
                     <input type="radio" name="genre" id="Science-fiction" class="inputForm" value="Science-fiction">
                     <label for ="thril">Thriller</label>
                     <input type="radio" name="genre" id="Thriller" class="inputForm" value="Thriller">
-               
+
                 </div>
                 <div>
                 <hr class="w-48 h-1 mx-auto bg-red-600 border-0 rounded my-2">
@@ -78,7 +78,7 @@
                     <input type="radio" name="audience" id="16" class="inputForm" value="16">
                     <label for ="18">18+</label>
                     <input type="radio" name="audience" id="18" class="inputForm" value="18">
-               
+
                 </div>
                 <hr class="w-48 h-1 mx-auto bg-red-800 border-0 rounded  my-2">
                 <div class="py-1">
@@ -122,7 +122,7 @@
                     <input type="radio" name="pays" id="Corée du Sud" class="inputForm" value="Corée du Sud">
                     <label for ="sexeNB">Autre</label>
                     <input type="radio" name="pays" id="Autre" class="inputForm" value="Autre">
-                                    
+
                 </div>
                 <div>
                 <hr class="w-48 h-1 mx-auto bg-red-800 border-0 rounded  my-2">
@@ -145,13 +145,22 @@
                 <label for="urltrailer">url trailer : </label>
                 <input type="text" name="urltrailer" id="urltrailer" class="inputForm" value="{{old('nationalite')}}">
                 </div>
-                
+
             </div>
-           
+
         </div>
-        <button type="submit" class="btn btn-primary">Créer</button>
-                    
+                    <hr class="w-48 h-1 mx-auto bg-red-800 border-0 rounded  my-2">
+                    <div>
+                        <button type="submit" class="btnForm">Créer</button>
+                        <button type="reset" class="btnForm">Vider</button>
+                        <a href="{{route('Films.index')}}" type="button" class="btnForm">Retour</a>
+                    </div>
+
                 </form>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        {!! JsValidator::formRequest('App\Http\Requests\FilmRequest') !!}
+
     </section>
-   
+
 @endsection
