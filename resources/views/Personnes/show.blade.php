@@ -6,7 +6,7 @@
     <section class="main-container " >
 
         <div class="text-center w-3/12 mx-auto">
-            <h1> Affichage de personne</h1>
+            <h1> Affichage de {{$personne->prenom}} {{$personne->nom}}</h1>
             <div class="rounded-lg bg-black">
                 <div class="flex justify-end px-4 pt-4 ">
 

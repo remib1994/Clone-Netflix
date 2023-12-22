@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use function Symfony\Component\String\s;
-use app\Models\Usager;
-use app\Models\Film;
+use App\Http\Requests\UsagerRequest;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
-use app\Models\Personne;
+use App\Models\Usager;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 class UsagersController extends Controller
@@ -25,22 +25,56 @@ class UsagersController extends Controller
         return view('Auth.login');
     }
 
+    public function index()
+    {
+        $usagers = Usager::all();
+        return view('Usagers.index',[
+            'usagers'=>$usagers,
+        ]);
+    }
     public function create()
     {
-
+        return view('Usagers.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
+        try{
+            $usager = new Usager($request->all());
+            $usager->password = Hash::make($request->password);
+            $usager->save();
+            return view('Auth.login');
+        }
+        catch (\throwable $e){
+            Log::debug($e);
+        }
+    }
+    public function edit(UsagerRequest $request,string $id)
+    {
+        $usager = Usager::findOrFail($id);
+        return view('Usagers.edit',[
+            'usager'=>$usager,
+        ]);
+    }
+    public function update(Request $request, string $id)
+    {
+        try{
+            $usager = Usager::find($id);
+            $usager->password->update(Hash::make($request->password));
+            $usager->update($request->all());
 
+            return view('Auth.login');
+        }
+        catch (\throwable $e){
+            Log::debug($e);
+        }
+    }
+    public function destroy(string $id)
+    {
+        $usager = Usager::findOrFail($id);
+        $usager->delete();
+        return redirect()->route('Usagers.index')->with('message', 'Usager '.$usager->nom.' '.$usager->prenom.'a été supprimé.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
 

@@ -71,7 +71,6 @@
                         </div>
                         <div class="text-center">
                             <a href="{{route('Personnes.destroy',$personne)}}" type="button" class=" btnForm w-5/12">Supprimer </a>
-
                         </div>
 
 

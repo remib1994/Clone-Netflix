@@ -20,29 +20,32 @@
         <a id="logo" href="{{route('Films.index')}}"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/799px-Netflix_2015_logo.svg.png" alt="Logo Image"></a>
     </div>
     @auth
-    @if(isset($films) OR isset($personnes))
+
     <nav class="main-nav">
         <a href="{{route('Films.index')}}">Films</a>
         <a href="{{route('Personnes.index')}}">Afficher Personne</a>
+        @role('admin')
+        <a href="{{route('Usagers.index')}}">Afficher Usagers</a>
+        @endrole
     </nav>
-    @else 
-    @endif
     @endauth
     <nav class="sub-nav mx-auto my-auto justify-end ">
-        <div class="flex-row flex "> 
+        <div class="flex-row flex ">
         <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
         <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a>
-        
+
         @auth
         @if($user = Auth::user())
         <form method="post" action="{{route('logout')}}" >
             @csrf
             <button class="mx-2 my-1 h-[26px]" type="submit">deconnexion</button>
         </form>
-            <a href="#">@role('admin') admin @endrole @role('normal') normal @endrole @role('enfant') enfant @endrole </a>
+                <a href="{{route('Usagers.edit',$user)}}">Mon Compte</a>
+{{--            <a>Type de compte : {{$user->id}}@role('admin') admin @endrole @role('normal') normal @endrole @role('enfant') enfant @endrole </a>--}}
+
          @else
             <a href="{{route('login')}}">Connexion</a>
-            
+
             @endif
         @endauth
         </div>

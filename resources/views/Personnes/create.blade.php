@@ -66,9 +66,12 @@
                             <label for="urlphoto">Sélectionner une photo pour la personne, en format .png, .jpg</label>
                             <input type="file" class="form-control-file" id="urlphoto" name="urlphoto">
                         </div>
-                        <div class="mb-4 grid-cols-3 grid gap-5 max-md:grid-cols-1">
-                            <input type="submit" value="Créer" class=" w-3/12 text-white dark:text-bleutr-3 px-4 py-3 rounded font-medium w-full">
-                            <input type="reset" value="Annuler" class="w-3/12   text-white dark:text-bleutr-3 px-4 py-3 rounded font-medium w-full">
+                        <div class="text-center mx-auto">
+                            <input type="submit" value="Créer" class="  btnForm">
+                            <input type="reset" value="Vider" class=" btnForm">
+                        </div>
+                        <div class="text-center">
+                            <a href="{{route('Personnes.index')}}" type="button" class=" btnForm">Retour</a>
                         </div>
                     </div>
 

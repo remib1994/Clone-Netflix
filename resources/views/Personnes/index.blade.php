@@ -16,7 +16,7 @@
                 <svg class="m-auto mr-2 w-[14px] h-[14px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
                 </svg>
-                <h6>Nouvelle Personne</h6>
+                <h6 class="mt-1">Nouvelle Personne</h6>
             </a>
         </div>
         <div class="flex flex-row overflow-x-auto">

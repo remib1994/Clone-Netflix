@@ -20,7 +20,9 @@
                     <input type="password" name="password" id="password" class="form-control red" placeholder="Mot de passe" >
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Se connecter</button>
+                    <button type="submit" class="btnForm">Se connecter</button>
+                    <a href="{{route('Usagers.create')}}" type="button" class=" btnForm">Création</a>
+
                 </div>
             </form>
             @if(isset($errors))
