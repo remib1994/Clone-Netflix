@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->string('urlaffiche');
             $table->foreignId('realisateur_id')->constrained('personnes');
             $table->foreignId('producteur_id')->constrained('personnes');
-            $table->dateTime('datesortie');
+            $table->date('datesortie');
             $table->float('rating');
             $table->string('urltrailer');
             $table->string('genre');

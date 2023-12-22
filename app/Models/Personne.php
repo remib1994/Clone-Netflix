@@ -8,18 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class Personne extends Model
 {
     use HasFactory;
-
+    protected $fillable = [
+        'nom',
+        'prenom',
+        'sexe',
+        'date_naissance',
+        'urlphoto',
+        'nationalite',
+        'role',
+    ];
+    public function films()
+    {
+        return $this->belongsToMany(Film::class,'acteur_films','acteur_id','film_id');
+    }
     public function filmsR()
     {
-        return $this->HasMany(Film::class,'realisateur_id');
+        return $this->hasMany(Film::class,'realisateur_id');
     }
     public function filmsP()
     {
-        return $this->HasMany(Film::class,'producteur_id');
-    }
-    public function filmsA()
-    {
-    return $this->belongsToMany(Film::class,'acteur_films','acteur_id','film_id');
+        return $this->hasMany(Film::class,'producteur_id');
     }
 
 }

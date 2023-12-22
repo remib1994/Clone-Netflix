@@ -18,7 +18,7 @@ class FilmFactory extends Factory
             'urlaffiche' => $this->faker->imageUrl(640, 480, 'animals', true),
             'realisateur_id' => $this->faker->numberBetween(1, 20),
             'producteur_id' => $this->faker->numberBetween(1, 20),
-            'datesortie' => $this->faker->dateTime(),
+            'datesortie' => $this->faker->date(),
             'rating' => $this->faker->randomFloat(1, 0, 5),
             'urltrailer' => $this->faker->url(),
             'genre' => $this->faker->randomElement(['action', 'aventure', 'comédie', 'drame', 'fantastique', 'horreur', 'policier', 'science-fiction', 'thriller']),
