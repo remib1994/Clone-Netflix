@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{asset('css\tailwind.css')}}">
     <link rel="stylesheet" href="{{asset('css\style.css')}}">
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tailwind.css">
     <title>@yield('titre')</title>
@@ -81,5 +82,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
     <script src="{{asset('js\scripts.js')}}"></script>
+    <script src="{{ asset('js/jsvalidation.js') }}"></script>
 </body>
 </html>

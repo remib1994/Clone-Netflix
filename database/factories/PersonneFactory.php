@@ -19,7 +19,7 @@ class PersonneFactory extends Factory
             'nationalite' => $this->faker->randomElement(['France', 'USA', 'UK','Canada', 'Espagne', 'Italie', 'Allemagne',
                 'Japon', 'Chine', 'Corée du Sud', 'Autre']),
             'sexe' => $this->faker->randomElement(['homme','femme','non-binaire']),
-            'urlphoto' => $this->faker->imageUrl(640, 480, 'animals', true),
+            'urlphoto' => "Acteur".$this->faker->numberBetween(1, 12).".jpg",
             'role' => $this->faker->randomElement(['acteur', 'réalisateur', 'producteur',]),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

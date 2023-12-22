@@ -66,5 +66,16 @@
         focus:text-2xl
 
     }
+    .btnForm{
+        @apply
+        p-2
+        text-black
+        bg-red-600
+        rounded-lg
+        border border-red-950
+        hover:text-2xl
+        focus:text-2xl
+        text-black
+    }
 }
 
