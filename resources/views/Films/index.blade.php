@@ -78,7 +78,7 @@
 
 
 
-                        <img src="{{$film->urlaffiche}}" alt="">
+                        <img src="{{asset('img/films/' . $film->urlaffiche)}}" alt="">
 
                     </a>
 
@@ -108,7 +108,7 @@
 
 
 
-                        <img src="{{$film->urlaffiche}}" alt="">
+                        <img src="{{asset('img/films/' . $film->urlaffiche)}}" alt="">
 
                     </a>
 
@@ -138,7 +138,7 @@
 
 
 
-                        <img src="{{$film->urlaffiche}}" alt="">
+                        <img src="{{asset('img/films/' . $film->urlaffiche)}}" alt="">
 
                     </a>
 
@@ -168,7 +168,7 @@
 
 
 
-        <img src="{{$film->urlaffiche}}" alt="">
+        <img src="{{asset('img/films/' . $film->urlaffiche)}}" alt="">
 
     </a>
 
@@ -198,7 +198,7 @@
 
 
 
-        <img src="{{$film->urlaffiche}}" alt="">
+        <img src="{{asset('img/films/' . $film->urlaffiche)}}" alt="">
 
     </a>
 
