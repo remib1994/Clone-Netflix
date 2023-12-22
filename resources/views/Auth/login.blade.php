@@ -5,7 +5,8 @@
 
     <section class="main-container " >
         <div class="text-center">
-            <h1 class="">Se connecter</h1>
+            <h1 class="text-white">Se connecter</h1>
+
         </div>
         <div class="">
             <form method="post" action="{{route('login')}}">
@@ -28,8 +29,6 @@
                 @endforeach
             @endif
         </div>
-
-
 
 
 

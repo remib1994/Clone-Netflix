@@ -45,4 +45,9 @@ class UsagersController extends Controller
     {
 
     }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('showLoginForm')->with('message','Déconnexion réussi.');
+    }
 }

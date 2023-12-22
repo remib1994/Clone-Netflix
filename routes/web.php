@@ -28,8 +28,21 @@ Route::controller(UsagersController::class)->prefix('login')->group(function () 
 
 //Route Films
 Route::resource('Films',FilmController::class);
-Route::get('Films/{film}/',[FilmController::class,'show'])->name('films.show');
+    [FilmController::class,'show'])->name('films.show');
+Route::get('Films/{film}/',
+Route::controller(FilmController::class)->prefix('Films')->group(function () {
+    Route::post('attach', 'attach')->name('FilmActeur.attach');
+    Route::post('detach', 'detach')->name('FilmActeur.detach');
+});
 
+    Route::get('Films.create',[FilmController::class,'create'])->name('films.create')->middleware('CheckRole:admin');
+
+    Route::post('Films.store',[FilmController::class,'store'])->name('films.store')->middleware('CheckRole:admin');
+
+Route::get('Films/{film}/edit',
+    [FilmController::class,'edit'])->name('films.edit') ->middleware('CheckRole:admin');
+Route::delete('Films/{id}',
+    [FilmController::class,'destroy'])->name('films.destroy')->middleware('CheckRole:admin');
 
 //Route Personne
 Route::resource('Personnes',PersonneController::class)->only(['index', 'edit','update', 'create', 'store','show']);
@@ -37,7 +50,5 @@ Route::controller(PersonneController::class)->prefix('Personnes')->group(functio
     Route::post('attach', 'attach')->name('ActeurFilm.attach');
     Route::post('detach', 'detach')->name('ActeurFilm.detach');
     Route::get('destroy/{id}', 'destroy')->name('Personnes.destroy');
-});
-
-
-
+}); 
+    

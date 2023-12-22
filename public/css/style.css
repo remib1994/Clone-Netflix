@@ -28,6 +28,10 @@ html, body {
 img {
     max-width: 100%;
 }
+.red{
+   
+ background-color: #E50914; 
+}
 
 .wrapper {
     margin: 0;

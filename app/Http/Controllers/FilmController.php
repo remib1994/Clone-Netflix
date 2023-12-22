@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Film;
+use App\Models\Personne;
+use Illuminate\Support\Facades\Log;
+use App\Http\Requests\FilmRequest;
 
 class FilmController extends Controller
 {
@@ -17,6 +20,7 @@ class FilmController extends Controller
         $filmsGenre = Film::where('genre', 'thriller')->get();
         $filmsUnivers = Film::where('univers', 'Marvel')->get();
         $films18 = Film::where('audience', '18')->get();
+        $filmsTP = Film::where('audience', 'TP')->get();
 
         return view('Films.index',
             [
@@ -25,6 +29,7 @@ class FilmController extends Controller
                 'filmsGenre'=>$filmsGenre,
                 'filmsUnivers'=>$filmsUnivers,
                 'films18'=>$films18,
+                'filmsTP'=>$filmsTP,
             ]);
     }
 
@@ -33,7 +38,14 @@ class FilmController extends Controller
      */
     public function create()
     {
-        return View('Films.Create');
+        $realisateur = Personne::all();
+        $producteur = Personne::all();
+        return View('Films.Create',[
+
+            'realisateurs'=>$realisateur,
+            'producteurs'=>$producteur,
+        ]);
+
     }
 
     /**
@@ -41,16 +53,54 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            
+            $film = new Film();
+            $film->titre = $request->titre;
+            $film->genre = $request->genre;
+            $film->pays = $request->pays;
+            $film->univers = $request->univers;
+            $film->audience = $request->audience;
+            $film->realisateur_id = $request->realisateur_id;
+            $film->producteur_id = $request->producteur;
+            $film->description = $request->description;
+            $film->urlaffiche = $request->urlaffiche;
+            $film->datesortie = $request->datesortie;
+            $film->rating = $request->rating;
+            $film->urltrailer = $request->urltrailer;
+           
+            $uploadedFile = $request->file('urlaffiche');
+           
+            $nomFichierUnique = str_replace('','_',$film->titre). '-' . uniqid() . '.' . $uploadedFile->extension();
+            try{
+                $request->urlaffiche->move(public_path('img/films'), $nomFichierUnique);
+            }
+            catch(\Symfony\Component\HttpFoundation\File\Exception\FileException $e){
+                Log::error("Impossible de copier le fichier dans le dossier img/films");
+            }
+            $film->urlaffiche = $nomFichierUnique;
+
+
+
+            $film->save();
+
+        }
+        catch(\Throwable $e){
+           Log::debug($e);
+           return redirect()->route('Films.index')->with('error','Impossible de créer le film');
+        }
+        return redirect()->route('Films.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Film $film)
+    public function show(string $id)
     {
-        
-        return View('Films.show', compact('film'));
+        $films = Film::find($id);
+        return View('Films.show', [
+            'films'=>$films,
+        ]);
 
     }
 
@@ -59,7 +109,20 @@ class FilmController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $realisateur = Personne::all();
+        $producteur = Personne::all();
+        $acteurs = Personne::all();
+        $acteursFilm = Film::find($id)->acteurs;
+        $films = Film::findOrFail($id);
+        return View('Films.modifier', [
+            'acteursFilm'=>$acteursFilm,
+            'acteurs'=>$acteurs,
+            'realisateurs'=>$realisateur,
+            'producteurs'=>$producteur,
+            'films'=>$films,
+        ]);
+
+
     }
 
     /**
@@ -67,7 +130,7 @@ class FilmController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
     }
 
     /**
@@ -75,6 +138,51 @@ class FilmController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try{
+            $films = Film::findOrFail($id);
+            $films->acteurs()->detach();
+            $films->delete();
+        }
+        catch(\Throwable $e){
+            Log::debug($e);
+            return redirect()->route('Films.index')->with('error','Impossible de supprimer le film');
+        }
+        return redirect()->route('Films.index')->with('success','Film supprimer');
+    }
+    public function storeActeurFilm(Request $request)
+    {
+        try{
+      $acteur = Personne::find($request->acteur_id);
+        $film = Film::find($request->film_id);
+
+        if($acteur->films->contains($film))
+        {
+            Log::debug("L'acteur est deja dans le film");
+        }
+        else
+        {
+            $acteur->films()->attach($film);
+            $acteur->save();
+        }
+        return redirect()->route('films.show');
+        }
+        catch(\Throwable $e){
+            Log::debug($e);
+            return redirect()->route('films.index');
+        }
+
+    }
+    public function attach(Request $request)
+    {
+        $film = Film::find($request->film_id);
+        $film->acteurs()->attach($request->acteur_id);
+        return redirect()->route('films.edit', $request->film_id);
+
+    }
+    public function detach(Request $request)
+    {
+        $film = Film::find($request->film_id);
+        $film->acteurs()->detach($request->acteur_id);
+        return redirect()->route('films.edit', $request->film_id);
     }
 }
