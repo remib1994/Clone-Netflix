@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\Personne::factory(20)->create();
         \App\Models\Film::factory(20)->create();
-        \App\Models\acteur_film::factory(20)->create();
+//        \App\Models\acteur_film::factory(20)->create();
         $this->call([
             usagersSeeder::class,
         ]);
